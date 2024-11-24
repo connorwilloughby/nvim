@@ -1,6 +1,4 @@
-require("mason").setup({
-    ui = {
-        icons = {
+require("mason").setup({ ui = { icons = {
             package_installed = "✓",
             package_pending = "➜",
             package_uninstalled = "✗"
@@ -20,3 +18,6 @@ require("mason-lspconfig").setup_handlers {
 	-- Next, you can provide a dedicated handler for specific servers.
 	-- For example, a handler override for the `rust_analyzer`:
 }
+
+
+-- require("pylyzer").setup()
