@@ -11,4 +11,4 @@ require('vscode').setup({
     disable_nvimtree_bg = true,
 })
 
-
+vim.cmd.colorscheme "vscode"
