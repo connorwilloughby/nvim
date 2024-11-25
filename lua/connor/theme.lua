@@ -10,3 +10,5 @@ require('vscode').setup({
     -- Disable nvim-tree background color
     disable_nvimtree_bg = true,
 })
+
+

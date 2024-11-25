@@ -1,7 +1,6 @@
 require("connor.remap")
-require("connor.lua_line")
 require("connor.mason")
-require("connor.theme")
 require("connor.packer")
 require("connor.cmp")
 require("connor.set")
+require("connor.theme")
