@@ -1,12 +1,13 @@
 vim.g.mapleader = " "
 
--- Get to files quicker
+-- get to files quicker
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 
--- Fugitive
+-- fugitive
 vim.keymap.set("n", "<leader>gd", "<cmd>G diff<CR>")
 vim.keymap.set("n", "<leader>gp", "<cmd>G pull<CR>")
+vim.keymap.set("n", "<leader>ga", ":G add ")
 vim.keymap.set("n", "<leader>gs", ":G checkout -p \"")
 vim.keymap.set("n", "<leader>gc", ":G commit -m \"")
 
@@ -24,5 +25,8 @@ vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end)
 vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end)
 vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end)
 
--- Format quicker
-vim.keymap.set("n", "<leader>l", vim.lsp.buf.format)
+-- Format and save quicker
+vim.keymap.set("n", "<leader>l", function()
+	vim.lsp.buf.format()
+	vim.cmd(":w")
+end)
