@@ -14,18 +14,26 @@ vim.keymap.set("n", "<leader>gc", ":G commit -m \"")
 -- quick source
 vim.keymap.set("n", "<leader><leader>", "<cmd>:so<CR>")
 
+-- check health rebinds
+vim.keymap.set("n", "<leader>chh", "<cmd>:checkhealth<CR>")
+vim.keymap.set("n", "<leader>ch", ":checkhealth ")
+
 -- lsp stuff
 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
 vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end)
 vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end)
+
+-- diagnostics
 vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end)
-vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end)
-vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end)
+vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end)
+vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end)
+
+-- code interactions
 vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end)
 vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end)
 vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end)
 
--- Format and save quicker
+-- format and save quicker
 vim.keymap.set("n", "<leader>l", function()
 	vim.lsp.buf.format()
 	vim.cmd(":w")
