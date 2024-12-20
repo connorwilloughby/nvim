@@ -3,7 +3,6 @@ vim.g.mapleader = " "
 -- get to files quicker
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
-
 -- fugitive
 vim.keymap.set("n", "<leader>gd", "<cmd>G diff<CR>")
 vim.keymap.set("n", "<leader>gp", "<cmd>G pull<CR>")
@@ -32,6 +31,9 @@ vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end)
 vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end)
 vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end)
 vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end)
+
+-- mason stuff
+vim.keymap.set("n", "<leader>m", "<cmd>:Mason<CR>")
 
 -- format and save quicker
 vim.keymap.set("n", "<leader>l", function()
