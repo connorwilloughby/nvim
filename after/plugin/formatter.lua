@@ -1,8 +1,8 @@
 -- Utilities for creating configurations
-local util = require "formatter.util"
+local util = require("formatter.util")
 
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
-require("formatter").setup {
+require("formatter").setup({
 	-- Enable or disable logging
 	logging = true,
 	-- Set the log level
@@ -31,12 +31,11 @@ require("formatter").setup {
 						"--search-parent-directories",
 						"--stdin-filepath",
 						util.escape_path(util.get_current_buffer_file_path()),
-						"--",
-						--"-",
+						-- "--",
 					},
-					stdin = true,
+					stdin = false,
 				}
-			end
+			end,
 		},
 		python = {
 			function()
@@ -47,7 +46,7 @@ require("formatter").setup {
 					},
 					stdin = false,
 				}
-			end
+			end,
 		},
 		typescript = {
 			function()
@@ -59,7 +58,7 @@ require("formatter").setup {
 					},
 					stdin = false,
 				}
-			end
+			end,
 		},
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
@@ -71,5 +70,5 @@ require("formatter").setup {
 			-- Remove trailing whitespace without 'sed'
 			-- require("formatter.filetypes.any").substitute_trailing_whitespace,
 		},
-	}
-}
+	},
+})

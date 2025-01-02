@@ -51,4 +51,13 @@ return require('packer').startup(function(use)
 
 	-- enables us to setup debugging	
 	use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
+	
+	-- manages config
+	use({
+		"stevearc/conform.nvim",
+		config = function()
+			require("conform").setup()
+		end,
+	})
+
 end)
