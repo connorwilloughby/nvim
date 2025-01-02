@@ -14,7 +14,6 @@ require("mason-lspconfig").setup_handlers {
 	function(server_name)
 		require("lspconfig")[server_name].setup {}
 	end,
-
 	["pylsp"] = function()
 		local lspconfig = require("lspconfig")
 		lspconfig.pylsp.setup {
@@ -24,7 +23,6 @@ require("mason-lspconfig").setup_handlers {
 			}
 		}
 	end,
-
 	["ts_ls"] = function()
 		local lspconfig = require("lspconfig")
 		lspconfig.ts_ls.setup {
@@ -37,7 +35,6 @@ require("mason-lspconfig").setup_handlers {
 			}
 		}
 	end,
-
 	["lua_ls"] = function()
 		local lspconfig = require("lspconfig")
 		lspconfig.lua_ls.setup {

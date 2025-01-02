@@ -46,9 +46,9 @@ return require('packer').startup(function(use)
 	-- Should enable linters from mason?
 	use 'mfussenegger/nvim-lint'
 
-	-- Debugging stuff
-	use 'mfussenegger/nvim-dap'
-
 	-- enable file formatters
 	use 'mhartington/formatter.nvim'
+
+	-- enables us to setup debugging	
+	use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
 end)

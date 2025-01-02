@@ -37,6 +37,6 @@ vim.keymap.set("n", "<leader>m", "<cmd>:Mason<CR>")
 
 -- format and save quicker
 vim.keymap.set("n", "<leader>l", function()
-	vim.lsp.buf.format()
+	vim.cmd(":FormatWrite")
 	vim.cmd(":w")
 end)
