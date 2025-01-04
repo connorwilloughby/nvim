@@ -94,6 +94,12 @@ _G.packer_plugins = {
     path = "C:\\Users\\Connor\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["conform.nvim"] = {
+    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fconform\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\Connor\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\conform.nvim",
+    url = "https://github.com/stevearc/conform.nvim"
+  },
   ["formatter.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Connor\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\formatter.nvim",
@@ -188,6 +194,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: conform.nvim
+time([[Config for conform.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fconform\frequire\0", "config", "conform.nvim")
+time([[Config for conform.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

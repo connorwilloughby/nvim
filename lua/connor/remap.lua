@@ -38,5 +38,14 @@ vim.keymap.set("n", "<leader>m", "<cmd>:Mason<CR>")
 -- format and save quicker
 vim.keymap.set("n", "<leader>l", function()
 	vim.cmd(":FormatWrite")
-	vim.cmd(":w")
+ 	--vim.cmd(":w")
 end)
+
+-- debug shit
+vim.keymap.set("n", "<F5>", function() require("dap").continue() end) --, "Debug: Start/Continue")
+vim.keymap.set("n", "<F1>", function() require("dap").step_into() end) --, "Debug: Step Into")
+vim.keymap.set("n", "<F2>", function() require("dap").step_over() end) --, "Debug: Step Over")
+vim.keymap.set("n", "<F3>", function() require("dap").step_out() end) --, "Debug: Step Out")
+vim.keymap.set("n", "<leader>b", function() require("dap").toggle_breakpoint() end) --, "Debug: Toggle Breakpoint")
+--vim.keymap.set("n", "<leader>B", function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end) --, "Debug: Set Breakpoint")
+vim.keymap.set("n", "<F7>", function() require("dapui").toggle() end) --, "Debug: See last session result.")
