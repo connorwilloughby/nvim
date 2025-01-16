@@ -27,6 +27,7 @@ dap.configurations.python = {
 		type = "python", -- Use the Python adapter defined above
 		request = "launch", -- Start a new debug session
 		name = "Launch File",
+		console = "integratedTerminal", -- Use an integrated terminal instead of a new one
 		program = "${file}", -- Debug the current file
 		pythonPath = function()
 			-- Use the Python interpreter from the environment
