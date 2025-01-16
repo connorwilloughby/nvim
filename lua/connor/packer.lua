@@ -8,13 +8,13 @@ return require("packer").startup(function(use)
 	-- The best package manager
 	use("wbthomason/packer.nvim")
 
+	-- enables lsp and more
 	use("nvim-treesitter/nvim-treesitter")
 
 	-- Navigate between files blazingly fast
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
-		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 

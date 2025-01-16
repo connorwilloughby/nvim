@@ -1,63 +1,36 @@
--- debug.lua
---
--- Shows how to use the DAP plugin to debug your code.
---
--- Primarily focused on configuring the debugger for Go, but can
--- be extended to other languages as well. That's why it's called
--- kickstart.nvim and not kitchen-sink.nvim ;)
+local dap = require("dap")
+local ui = require("dapui")
 
-return {
-	-- NOTE: Yes, you can install new plugins here!
-	"mfussenegger/nvim-dap",
-	-- NOTE: And you can specify dependencies as well
-	dependencies = {},
-	keys = {},
-	config = function()
-		local dap = require("dap")
-		local dapui = require("dapui")
+require("dapui").setup()
 
-		require("mason-nvim-dap").setup({
-			-- Makes a best effort to setup the various debuggers with
-			-- reasonable debug configurations
-			automatic_installation = true,
+-- Open and close the DAP UI automatically when debugging starts/stops
+dap.listeners.after.event_initialized["dapui_config"] = function()
+	ui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+	ui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+	ui.close()
+end
 
-			-- You can provide additional configuration to the handlers,
-			-- see mason-nvim-dap README for more information
-			handlers = {},
+-- Configure the Python debugger adapter (debugpy)
+dap.adapters.python = {
+	type = "executable",
+	command = "python", -- Adjust this to your Python interpreter path if needed
+	args = { "-m", "debugpy.adapter" },
+}
 
-			-- You'll need to check that you have the required things installed
-			-- online, please don't ask me how to install them :)
-			ensure_installed = {
-				-- Update this to ensure that you have the debuggers for the langs you want
-				"delve",
-			},
-		})
-
-		-- Dap UI setup
-		-- For more information, see |:help nvim-dap-ui|
-		dapui.setup({
-			-- Set icons to characters that are more likely to work in every terminal.
-			--    Feel free to remove or use ones that you like more! :)
-			--    Don't feel like these are good choices.
-			icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
-			controls = {
-				icons = {
-					pause = "⏸",
-					play = "▶",
-					step_into = "⏎",
-					step_over = "⏭",
-					step_out = "⏮",
-					step_back = "b",
-					run_last = "▶▶",
-					terminate = "⏹",
-					disconnect = "⏏",
-				},
-			},
-		})
-
-		-- Install python specific config
-		require("mason-nvim-dap").setup({
-			ensure_installed = { "debugpy", "python" },
-		})
-	end,
+-- Define configurations for Python
+dap.configurations.python = {
+	{
+		type = "python", -- Use the Python adapter defined above
+		request = "launch", -- Start a new debug session
+		name = "Launch File",
+		program = "${file}", -- Debug the current file
+		pythonPath = function()
+			-- Use the Python interpreter from the environment
+			return "python"
+		end,
+	},
 }

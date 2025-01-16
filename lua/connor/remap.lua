@@ -41,6 +41,10 @@ vim.keymap.set("n", "<leader>l", function()
  	--vim.cmd(":w")
 end)
 
+-- shift lines up and down 
+vim.api.nvim_set_keymap('n', '<A-j>', ':m .+1<CR>==', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-k>', ':m .-2<CR>==', { noremap = true, silent = true })
+
 -- debug shit
 vim.keymap.set("n", "<F5>", function() require("dap").continue() end) --, "Debug: Start/Continue")
 vim.keymap.set("n", "<F1>", function() require("dap").step_into() end) --, "Debug: Step Into")
