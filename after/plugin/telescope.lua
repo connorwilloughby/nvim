@@ -1,5 +1,16 @@
 local builtin = require("telescope.builtin")
 
+require("telescope").setup({
+	extensions = {
+		project = {
+			base_dirs = { "C:\\Users\\Connor\\Documents\\Github", "C:\\Users\\Connor\\AppData\\Local" },
+			hidden_files = true,
+		},
+	},
+})
+require("telescope").load_extension("project")
+vim.api.nvim_set_keymap("n", "<leader>fp", ":Telescope project<CR>", { noremap = true, silent = true })
+
 -- Standard maps
 vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
