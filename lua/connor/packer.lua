@@ -18,6 +18,13 @@ return require("packer").startup(function(use)
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 
+	-- then move through projects aswell
+	use({
+		"nvim-telescope/telescope-project.nvim",
+		requires = {
+			"nvim-telescope/telescope.nvim",
+		},
+	})
 	-- Gets a basic LSP installed for our shit
 	use({
 		"williamboman/mason.nvim",
@@ -58,6 +65,14 @@ return require("packer").startup(function(use)
 		"stevearc/conform.nvim",
 		config = function()
 			require("conform").setup()
+		end,
+	})
+
+	-- enable multi comments
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
 		end,
 	})
 end)
