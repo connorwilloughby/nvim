@@ -92,3 +92,12 @@ end, { desc = "Debug: Restart Session" })
 vim.keymap.set("n", "<S-F5>", function()
 	require("dap").terminate() -- Stop the current session
 end)
+
+-- multi line comments
+vim.keymap.set("n", "<leader>kc",
+	function() require("Comment.api").toggle.linewise.current()
+end, { desc = "Toggle comment (line)" })
+
+vim.keymap.set("x", "<leader>kc", function()
+  require("Comment.api").toggle.linewise(vim.fn.visualmode())
+end, { desc = "Toggle comment (selection)" })
