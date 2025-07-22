@@ -18,7 +18,17 @@ require("mason-lspconfig").setup_handlers({
 		local lspconfig = require("lspconfig")
 		lspconfig.pylsp.setup({
 			settings = {
-				Python = {},
+				Python = {
+					-- TODO: add a custom interpreter for python paths
+				},
+				plugins = {
+					pycodestyle = {
+						maxLineLength = 88,
+					},
+					flake8 = {
+						maxLineLength = 88,
+					},
+				},
 			},
 		})
 	end,
@@ -46,4 +56,12 @@ require("mason-lspconfig").setup_handlers({
 			},
 		})
 	end,
+	-- -- ["yamlls"] = function()
+	-- -- 	local lspconfig = require("lspconfig")
+	-- -- 	lspconfig.yamlls.setup({
+	-- -- 		settings = {
+	-- -- 			yaml = {},
+	-- -- 		},
+	-- 	})
+	-- end,
 })

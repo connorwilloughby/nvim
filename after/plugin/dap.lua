@@ -14,24 +14,42 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	ui.close()
 end
 
--- Configure the Python debugger adapter (debugpy)
+-- Python Debug Adapter Configuration (using debugpy)
 dap.adapters.python = {
 	type = "executable",
-	command = "python", -- Adjust this to your Python interpreter path if needed
+	command = "python", -- Change this if necessary (e.g., to `python3`)
 	args = { "-m", "debugpy.adapter" },
 }
 
--- Define configurations for Python
+-- Automatically detect virtual environment in project root
 dap.configurations.python = {
 	{
-		type = "python", -- Use the Python adapter defined above
-		request = "launch", -- Start a new debug session
-		name = "Launch File",
-		console = "integratedTerminal", -- Use an integrated terminal instead of a new one
+		type = "python",
+		request = "launch",
+		name = "Debug File",
 		program = "${file}", -- Debug the current file
+		console = "integratedTerminal", -- Use Neovim's integrated terminal
+		envFile = "${workspaceFolder}/.env", -- Used to add more python paths on the fly
 		pythonPath = function()
-			-- Use the Python interpreter from the environment
-			return "python"
+			local cwd = vim.fn.getcwd()
+			if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+				return cwd .. "/venv/bin/python"
+			elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+				return cwd .. "/.venv/bin/python"
+			elseif vim.fn.executable(cwd .. "/.venv/Scripts/python") == 1 then
+				return cwd .. "/.venv/Scripts/python"
+			elseif vim.fn.executable(cwd .. "/venv/Scripts/python") == 1 then
+				return cwd .. "/venv/Scripts/python"
+			elseif vim.fn.executable(cwd .. "/.venv/scripts/python") == 1 then
+				return cwd .. "/.venv/scripts/python"
+			else
+				return "python" -- Fallback to system Python
+			end
 		end,
 	},
+}
+
+-- Ensure external terminal doesn't open
+dap.defaults.python = {
+	terminal_win_cmd = "", -- Prevents opening an external terminal
 }

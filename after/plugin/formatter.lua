@@ -60,6 +60,16 @@ require("formatter").setup({
 				}
 			end,
 		},
+		-- yaml = {
+		-- 	function()
+		-- 		return {
+		-- 			exe = "yaml-language-server",
+		-- 			args = {
+		-- 				util.escape_path(util.get_current_buffer_file_path()),
+		-- 			},
+		-- 		}
+		-- 	end,
+		-- },
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
 		["*"] = {
