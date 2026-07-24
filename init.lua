@@ -1,1 +1,3 @@
-require("connor")
+require("config.lazy")
+
+require("config.remap")
