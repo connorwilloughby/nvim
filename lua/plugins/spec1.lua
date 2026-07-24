@@ -1,4 +1,4 @@
-return { 
+return {
        {
 	    "hrsh7th/nvim-cmp",
 	    -- load cmp on InsertEnter
@@ -15,6 +15,11 @@ return {
 	{
 	    "mason-org/mason.nvim",
 	    opts = {}
+	},{
+	    'nvim-telescope/telescope-project.nvim',
+	    dependencies = {
+		'nvim-telescope/telescope.nvim',
+	    },
 	},
 	{
 	    "mason-org/mason-lspconfig.nvim",
@@ -31,7 +36,7 @@ return {
 		-- optional but recommended
 		{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     		{ 'https://github.com/BurntSushi/ripgrep' }, -- is required for live_grep and grep_string and is the first priority for find_files.
-    		{ 'devicons' } , -- (icons)
+		{"nvim-tree/nvim-web-devicons"},
 	    }
 	},
 	{
