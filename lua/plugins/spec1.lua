@@ -1,71 +1,61 @@
 return {
-       {
-	    "hrsh7th/nvim-cmp",
-	    -- load cmp on InsertEnter
-	    event = "InsertEnter",
-	    -- these dependencies will only be loaded when cmp loads
-	    -- dependencies are always lazy-loaded unless specified otherwise
-	    dependencies = {
-	      "hrsh7th/cmp-nvim-lsp",
-	      "hrsh7th/cmp-buffer",
-	    },
-	    config = function()
-	    end,
-        },
 	{
-	    "mason-org/mason.nvim",
-	    opts = {}
-	},{
-	    'nvim-telescope/telescope-project.nvim',
-	    dependencies = {
-		'nvim-telescope/telescope.nvim',
-	    },
+		"mason-org/mason.nvim",
+		opts = {},
 	},
 	{
-	    "mason-org/mason-lspconfig.nvim",
-	    opts = {},
-	    dependencies = {
-		{ "mason-org/mason.nvim", opts = {} },
-		"neovim/nvim-lspconfig",
-	    },
+		"nvim-telescope/telescope-project.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
 	},
 	{
-	    'nvim-telescope/telescope.nvim', version = '*',
-	    dependencies = {
-		'nvim-lua/plenary.nvim',
-		-- optional but recommended
-		{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    		{ 'https://github.com/BurntSushi/ripgrep' }, -- is required for live_grep and grep_string and is the first priority for find_files.
-		{"nvim-tree/nvim-web-devicons"},
-	    }
+		"mason-org/mason-lspconfig.nvim",
+		opts = {},
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
+		},
 	},
 	{
-		  "nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate",
-		  config = function()
-		    require("nvim-treesitter.configs").setup({
-		      highlight = {
-			enable = true,
-		      },
-		    })
-		  end,
-
+		"nvim-telescope/telescope.nvim",
+		version = "*",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			-- optional but recommended
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			{ "https://github.com/BurntSushi/ripgrep" }, -- is required for live_grep and grep_string and is the first priority for find_files.
+			{ "nvim-tree/nvim-web-devicons" },
+		},
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "master",
+		lazy = false,
+		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				highlight = {
+					enable = true,
+				},
+			})
+		end,
 	},
 	{
 		"mofiqul/vscode.nvim",
 		priority = 1000,
 		lazy = false,
 		config = function()
-		    vim.cmd.colorscheme("vscode")
+			vim.cmd.colorscheme("vscode")
 		end,
 	},
 	{
 		"stevearc/conform.nvim",
-		  opts = {
-	    formatters_by_ft = {
-	      python = { "ruff_format" },
-	      lua = { "stylua" },
-		    },
-		  },
-	}
-
+		opts = {
+			formatters__ft = {
+				python = { "ruff_format" },
+				lua = { "stylua" },
+			},
+		},
+	},
 }
