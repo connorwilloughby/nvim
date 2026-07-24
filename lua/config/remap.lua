@@ -10,12 +10,18 @@ vim.keymap.set("n", "<leader>ga", ":G add ")
 vim.keymap.set("n", "<leader>gs", ':G checkout -p "')
 vim.keymap.set("n", "<leader>gc", ':G commit -m "')
 
+
+-- Telescope stuff
+vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
+vim.keymap.set("n", "<leader>fg", ":Telescope git_files<CR>")
+
 -- quick source
 vim.keymap.set("n", "<leader><leader>", "<cmd>:so<CR>")
 
 -- check health rebinds
 vim.keymap.set("n", "<leader>chh", "<cmd>:checkhealth<CR>")
 vim.keymap.set("n", "<leader>ch", ":checkhealth ")
+
 
 -- lsp stuff
 vim.keymap.set("n", "gd", function()
