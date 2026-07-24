@@ -42,8 +42,4 @@ return {
 	{
 		  "nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"
 	},
-	{
-		"https://github.com/tpope/vim-fugitive",
-		opts={}
-	},
 }

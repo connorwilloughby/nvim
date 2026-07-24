@@ -1,6 +1,11 @@
 vim.g.mapleader = " "
 
--- get to files quicker
+local telescope_builtin = require("telescope.builtin")
+
+-- Lazy stuff 
+vim.keymap.set("n", "<leader>l", ":Lazy<cr>")
+
+-- get to netrw quicker
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- fugitive
@@ -12,6 +17,7 @@ vim.keymap.set("n", "<leader>gc", ':G commit -m "')
 
 
 -- Telescope stuff
+vim.keymap.set("n", "<leader>ts", ":Telescope<CR>")
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
 vim.keymap.set("n", "<leader>fg", ":Telescope git_files<CR>")
 vim.api.nvim_set_keymap("n", "<leader>fp", ":Telescope project<CR>", { noremap = true, silent = true })
@@ -19,18 +25,16 @@ vim.keymap.set("n", "<leader>fg", ":Telescope git_files<CR>", {})
 vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", {})
 vim.keymap.set("n", "<leader>fj", ":Telescope jumplist<CR>", {})
+
 vim.keymap.set("n", "<leader>fs", function()
-	builtin.grep_string({ search = vim.fn.input("grep > ") })
+	telescope_builtin.grep_string({ search = vim.fn.input("grep > ") })
 end)
 vim.keymap.set("n", "<leader>fv", function()
-	builtin.git_files({ cwd = "~\\AppData\\local\\nvim" })
+	telescope_builtin.git_files({ cwd = "~\\AppData\\local\\nvim" })
 end)
 vim.keymap.set("n", "<leader>fd", function()
-	builtin.find_files({ cwd = "~\\AppData\\local\\nvim-data" })
+	telescope_builtin.find_files({ cwd = "~\\AppData\\local\\nvim-data" })
 end)
-
-
-
 
 -- quick source
 vim.keymap.set("n", "<leader><leader>", "<cmd>:so<CR>")
@@ -77,7 +81,7 @@ end)
 vim.keymap.set("n", "<leader>m", "<cmd>:Mason<CR>")
 
 -- format and save quicker
-vim.keymap.set("n", "<leader>l", function()
+vim.keymap.set("n", "<leader>s", function()
 	--vim.cmd(":FormatWrite")
 	vim.cmd(":w")
 end)
