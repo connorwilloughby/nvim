@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 
 local telescope_builtin = require("telescope.builtin")
 
--- Lazy stuff 
+-- Lazy stuff
 vim.keymap.set("n", "<leader>l", ":Lazy<cr>")
 
 -- get to netrw quicker
@@ -16,7 +16,6 @@ vim.keymap.set("n", "<leader>ga", ":G add ")
 vim.keymap.set("n", "<leader>gc", ':G commit -m "')
 vim.keymap.set("n", "<leader>gss", ":G status<CR>")
 vim.keymap.set("n", "<leader>gsw", ':G checkout -p "')
-
 
 -- Telescope stuff
 vim.keymap.set("n", "<leader>ts", ":Telescope<CR>")
@@ -44,7 +43,6 @@ vim.keymap.set("n", "<leader><leader>", "<cmd>:so<CR>")
 -- check health rebinds
 vim.keymap.set("n", "<leader>chh", "<cmd>:checkhealth<CR>")
 vim.keymap.set("n", "<leader>ch", ":checkhealth ")
-
 
 -- lsp stuff
 vim.keymap.set("n", "gd", function()
@@ -84,8 +82,10 @@ vim.keymap.set("n", "<leader>m", "<cmd>:Mason<CR>")
 
 -- format and save quicker
 vim.keymap.set("n", "<leader>w", function()
-	--vim.cmd(":FormatWrite")
+	require("conform").format()
 	vim.cmd(":w")
+	--vim.cmd(":FormatWrite")
+	--vim.cmd(":w")
 end)
 
 -- shift lines up and down
@@ -93,11 +93,21 @@ vim.api.nvim_set_keymap("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent =
 vim.api.nvim_set_keymap("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true })
 
 -- debug shit
-vim.keymap.set("n", "<F5>", function() require("dap").continue() end) --, "Debug: Start/Continue")
-vim.keymap.set("n", "<F9>", function() require("dap").toggle_breakpoint() end) --, "Debug: Toggle Breakpoint")
-vim.keymap.set("n", "<F10>", function() require("dap").step_over() end) --, "Debug: Step Over")
-vim.keymap.set("n", "<F11>", function() require("dap").step_into() end) --, "Debug: Step Into")
-vim.keymap.set("n", "<S-F11>", function() require("dap").step_out() end) --, "Debug: Step Out")
+vim.keymap.set("n", "<F5>", function()
+	require("dap").continue()
+end) --, "Debug: Start/Continue")
+vim.keymap.set("n", "<F9>", function()
+	require("dap").toggle_breakpoint()
+end) --, "Debug: Toggle Breakpoint")
+vim.keymap.set("n", "<F10>", function()
+	require("dap").step_over()
+end) --, "Debug: Step Over")
+vim.keymap.set("n", "<F11>", function()
+	require("dap").step_into()
+end) --, "Debug: Step Into")
+vim.keymap.set("n", "<S-F11>", function()
+	require("dap").step_out()
+end) --, "Debug: Step Out")
 vim.keymap.set("n", "<F7>", function()
 	require("dapui").toggle()
 end) --, "Debug: See last session result.")
@@ -112,10 +122,10 @@ vim.keymap.set("n", "<S-F5>", function()
 end)
 
 -- multi line comments
-vim.keymap.set("n", "<leader>kc",
-	function() require("Comment.api").toggle.linewise.current()
+vim.keymap.set("n", "<leader>kc", function()
+	require("Comment.api").toggle.linewise.current()
 end, { desc = "Toggle comment (line)" })
 
 vim.keymap.set("x", "<leader>kc", function()
-  require("Comment.api").toggle.linewise(vim.fn.visualmode())
+	require("Comment.api").toggle.linewise(vim.fn.visualmode())
 end, { desc = "Toggle comment (selection)" })
