@@ -9,11 +9,13 @@ vim.keymap.set("n", "<leader>l", ":Lazy<cr>")
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- fugitive
-vim.keymap.set("n", "<leader>gd", "<cmd>G diff<CR>")
-vim.keymap.set("n", "<leader>gp", "<cmd>G pull<CR>")
+vim.keymap.set("n", "<leader>gd", ":G diff<CR>")
+vim.keymap.set("n", "<leader>gpl", ":G pull<CR>")
+vim.keymap.set("n", "<leader>gpu", ":G push<CR>")
 vim.keymap.set("n", "<leader>ga", ":G add ")
-vim.keymap.set("n", "<leader>gs", ':G checkout -p "')
 vim.keymap.set("n", "<leader>gc", ':G commit -m "')
+vim.keymap.set("n", "<leader>gss", ":G status<CR>")
+vim.keymap.set("n", "<leader>gsw", ':G checkout -p "')
 
 
 -- Telescope stuff
@@ -81,7 +83,7 @@ end)
 vim.keymap.set("n", "<leader>m", "<cmd>:Mason<CR>")
 
 -- format and save quicker
-vim.keymap.set("n", "<leader>s", function()
+vim.keymap.set("n", "<leader>w", function()
 	--vim.cmd(":FormatWrite")
 	vim.cmd(":w")
 end)
