@@ -38,6 +38,12 @@ return {
 				highlight = {
 					enable = true,
 				},
+				ensure_installed = {
+				    "markdown",
+				    "markdown_inline",
+				    "python",
+				    "lua",
+			   	},
 			})
 		end,
 	},
@@ -53,8 +59,9 @@ return {
 		"stevearc/conform.nvim",
 		opts = {
 			formatters__ft = {
-				python = { "ruff_format" },
+				python = { "ruff" },
 				lua = { "stylua" },
+				--markdown = { "markdownlint-cli-2" },
 			},
 		},
 	},
