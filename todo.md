@@ -31,7 +31,4 @@ A generic list of things that i need to get working in this config setup.
 1. [ ] python
 1. [ ] typescript
 1. [ ] lua
- 
-## migration to WSL stuff
-
 

@@ -36,7 +36,7 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				highlight = {
-					enable = true,
+				enable = true,
 				},
 				ensure_installed = {
 				    "markdown",
@@ -54,15 +54,5 @@ return {
 		config = function()
 			vim.cmd.colorscheme("vscode")
 		end,
-	},
-	{
-		"stevearc/conform.nvim",
-		opts = {
-			formatters__ft = {
-				python = { "ruff" },
-				lua = { "stylua" },
-				--markdown = { "markdownlint-cli-2" },
-			},
-		},
 	},
 }

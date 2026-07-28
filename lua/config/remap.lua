@@ -19,22 +19,18 @@ vim.keymap.set("n", "<leader>gsw", ':G checkout -p "')
 
 -- Telescope stuff
 vim.keymap.set("n", "<leader>ts", ":Telescope<CR>")
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
-vim.keymap.set("n", "<leader>fg", ":Telescope git_files<CR>")
 vim.api.nvim_set_keymap("n", "<leader>fp", ":Telescope project<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
+vim.keymap.set("n", "<leader>fs", ":Telescope lsp_workspace_symbols<CR>")
+vim.keymap.set("n", "<leader>fg", ":Telescope git_files<CR>")
 vim.keymap.set("n", "<leader>fg", ":Telescope git_files<CR>", {})
+vim.keymap.set("n", "<leader>fl", ":Telescope live_grep<CR>", {})
 vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", {})
 vim.keymap.set("n", "<leader>fj", ":Telescope jumplist<CR>", {})
-
-vim.keymap.set("n", "<leader>fs", function()
-	telescope_builtin.grep_string({ search = vim.fn.input("grep > ") })
-end)
+-- 	find wihtin vim
 vim.keymap.set("n", "<leader>fv", function()
-	telescope_builtin.git_files({ cwd = "~\\AppData\\local\\nvim" })
-end)
-vim.keymap.set("n", "<leader>fd", function()
-	telescope_builtin.find_files({ cwd = "~\\AppData\\local\\nvim-data" })
+	telescope_builtin.git_files({ cwd = "~/.config/nvim/" })
 end)
 
 -- quick source
@@ -82,10 +78,11 @@ vim.keymap.set("n", "<leader>m", "<cmd>:Mason<CR>")
 
 -- format and save quicker
 vim.keymap.set("n", "<leader>w", function()
-	require("conform").format()
-	vim.cmd(":w")
-	--vim.cmd(":FormatWrite")
-	--vim.cmd(":w")
+	require("conform").format({
+		async = false,
+		lsp_fallback = true,
+	})
+	vim.cmd.update()
 end)
 
 -- shift lines up and down

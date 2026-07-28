@@ -13,6 +13,7 @@ return {
           base_dirs = {
             "~/Documents/repos/",
             "~/.config/",
+            "~/",
           },
           ignore_missing_dirs = true,
           hidden_files = true,
