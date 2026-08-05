@@ -15,7 +15,7 @@ vim.keymap.set("n", "<leader>gpu", ":G push<CR>")
 vim.keymap.set("n", "<leader>ga", ":G add ")
 vim.keymap.set("n", "<leader>gc", ':G commit -m "')
 vim.keymap.set("n", "<leader>gss", ":G status<CR>")
-vim.keymap.set("n", "<leader>gsw", ':G checkout -p "')
+vim.keymap.set("n", "<leader>gsw", ":G switch -c ")
 
 -- Telescope stuff
 vim.keymap.set("n", "<leader>ts", ":Telescope<CR>")
