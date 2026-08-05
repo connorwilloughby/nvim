@@ -15,7 +15,7 @@ vim.keymap.set("n", "<leader>gpu", ":G push<CR>")
 vim.keymap.set("n", "<leader>ga", ":G add ")
 vim.keymap.set("n", "<leader>gc", ':G commit -m "')
 vim.keymap.set("n", "<leader>gss", ":G status<CR>")
-vim.keymap.set("n", "<leader>gsw", ':G checkout -p "')
+vim.keymap.set("n", "<leader>gsw", ":G switch -c ")
 
 -- Telescope stuff
 vim.keymap.set("n", "<leader>ts", ":Telescope<CR>")
@@ -33,8 +33,9 @@ vim.keymap.set("n", "<leader>fv", function()
 	telescope_builtin.git_files({ cwd = "~/.config/nvim/" })
 end)
 
--- quick source
-vim.keymap.set("n", "<leader><leader>", "<cmd>:so<CR>")
+-- generic shortcuts
+vim.keymap.set("n", "<leader><leader>", "<cmd>:so<CR>", { desc = "quick source" })
+vim.keymap.set("v", "c", '"+y', { desc = "yank into clipboard" })
 
 -- check health rebinds
 vim.keymap.set("n", "<leader>chh", "<cmd>:checkhealth<CR>")
