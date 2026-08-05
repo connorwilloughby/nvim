@@ -33,8 +33,9 @@ vim.keymap.set("n", "<leader>fv", function()
 	telescope_builtin.git_files({ cwd = "~/.config/nvim/" })
 end)
 
--- quick source
-vim.keymap.set("n", "<leader><leader>", "<cmd>:so<CR>")
+-- generic shortcuts
+vim.keymap.set("n", "<leader><leader>", "<cmd>:so<CR>", { desc = "quick source" })
+vim.keymap.set("v", "c", '"+y', { desc = "yank into clipboard" })
 
 -- check health rebinds
 vim.keymap.set("n", "<leader>chh", "<cmd>:checkhealth<CR>")
